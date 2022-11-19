@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
 import java.util.Random;
 import org.anarres.lzo.hadoop.codec.LzoCompressor;
 import org.anarres.lzo.hadoop.codec.LzoDecompressor;
@@ -36,7 +37,7 @@ public class BlockCompressorStreamTest {
 
     @Before
     public void setUp() throws IOException {
-        file = File.createTempFile("BlockCompressorStreamTest", ".data");
+        file = Files.createTempFile("BlockCompressorStreamTest", ".data").toFile();
         file.deleteOnExit();
         final Random r = new Random();
         InputStream is = new NullInputStream(100 * 1024 * 1024) {
